@@ -1,5 +1,19 @@
 # Verification - 2026-10-19
 
+## HTML 0.1.1 update
+
+- Added compatibility fallbacks for AbortSignal.any and AbortSignal.timeout.
+- Added a playback connection panel distinguishing HTTP failures, filtered
+  non-JSON responses, transport failures, and a healthy feed with no playback.
+  The panel includes Chrome and build versions; diagnostic data stays local.
+- Seven direct-client tests pass, including older-browser cancellation,
+  network failure/recovery, filtered HTML and HTTP error reporting.
+- Live public Spotify and Dihlyrics endpoints returned active playback with
+  Origin: null during diagnosis. Browser preview displayed the track and
+  connection panel. This does not identify the school Mac's failure: actual
+  Mac file opening, network policies and its Chrome version remain unverified.
+- No backend or authentication changes were made for this update.
+
 - Single HTML build passed; approximately 8.3 MB including fonts, images, code,
   styles and third-party license notices. No external application script or CSS
   files and no meta-refresh redirect.
