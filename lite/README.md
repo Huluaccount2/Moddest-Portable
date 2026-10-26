@@ -1,9 +1,9 @@
-# Moddest Lite 0.3.0
+# Moddest Lite 0.3.1
 
 [Download Moddest-Lite.html](https://github.com/Huluaccount2/Moddest-Portable/raw/refs/heads/main/lite/Moddest-Lite.html)
 
 Open the downloaded HTML in Chrome. No installation, Terminal, Node.js, or
-companion files are required. The file is approximately 556 KB.
+companion files are required. The file is approximately 1.8 MB.
 
 ## Included
 
@@ -24,8 +24,8 @@ companion files are required. The file is approximately 556 KB.
 ## Online Features
 
 This is an online-connected client, not a fully offline game or music archive.
-Application code, styles, icons and the original 25 thumbnails are embedded.
-The additional artwork, game programs and audio still load from online services.
+Application code, styles, icons and all 218 game thumbnails are embedded.
+Game programs and audio still load from online services.
 Skribbl.io opens its original site in another tab.
 
 Music uses the existing HTTPS public services, with the selected paid1 service
@@ -33,8 +33,10 @@ as a network-failure fallback. It never streams Spotify account audio or changes
 anyone else's playback. Public Spotify metadata remains read-only.
 
 Connections selects the public live/history and preferred game service.
-Games missing from the reduced Daki catalog retry against the complete existing
-HTTPS catalog. An unavailable or blocked backend can still prevent playback.
+Games now use a dedicated complete-catalog read route on the selected service,
+including paid1, rather than the Daki page's reduced game route. The existing
+HTTPS service remains a fallback. Nested scripts, data, images and known splash
+assets use that same per-game route. An unavailable backend can prevent playback.
 
 ## Local Data and Limits
 
