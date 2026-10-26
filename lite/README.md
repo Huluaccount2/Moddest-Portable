@@ -1,45 +1,54 @@
-# Moddest Lite: 25-game HTML test
+# Moddest Lite 0.3.0
 
 [Download Moddest-Lite.html](https://github.com/Huluaccount2/Moddest-Portable/raw/refs/heads/main/lite/Moddest-Lite.html)
 
 Open the downloaded HTML in Chrome. No installation, Terminal, Node.js, or
-other files are needed. The interface, icons, styles and 25 game thumbnails
-are embedded in this approximately 213 KB file.
+companion files are required. The file is approximately 556 KB.
 
-Included:
-- The first 25 games from the existing Moddest catalog, Retro Bowl through Vex 7.
-- Live public Moddest playback, album artwork, progress and word-timed lyrics.
-- Personal music search and audio playback, with play/pause, queue navigation,
-  seeking and volume. Audio continues while browsing the game/history views.
-- A lyrics popup with timed words and click-to-seek, plus changing tab lyrics.
-  Tab lyrics use personal playback while active and the public feed otherwise.
-  After pausing or ten seconds without a lyric, the title returns to Moddest.
-- The ten latest public listening-history entries and recorded play counts.
-- Local per-game saves, search, categories, full-screen game view and credits.
+## Included
 
-This is a small online-connected client, not a fully offline game collection.
-Game programs/assets, live music and history still require network access.
-The default service is the paid1 mirror. Connections also offers the existing
-HTTPS services when available. A local file cannot make a blocked or offline
-service accessible, and managed-device policies can still restrict features.
+- All 218 entries from the current Moddest game catalog, with search,
+  categories, local saves, fullscreen controls and credits.
+- The actual Moddest music page, audio player and lyrics components, bundled
+  into the HTML rather than an iframe or a second simplified implementation.
+- Song search, album and artist views, library, likes, playlists, queue,
+  shuffle/repeat, seeking, volume and the word-synced lyrics popup.
+- Live public Moddest playback and the ten latest public history entries.
+- Personal tab-title lyrics while your own music is active, public live lyrics
+  otherwise. Pausing or a lyric gap returns the title to Moddest after 10 seconds.
+- Long line-only tab titles scroll forward at the same fixed speed as the main
+  site, then stop at the ending instead of wrapping or replaying missed steps.
+- The existing public playback WebSocket, with polling fallback. Personal
+  lyrics use the audio clock directly and schedule the next word boundary.
 
-Skribbl.io opens its original site in a separate tab; the other games open
-inside the local interface. There are no proxy website launchers, accounts,
-chat, AI, reservations, Spotify controls or hidden hosted-page redirects.
-The public live strip displays the owner's playback until you choose a song
-in Music. Stop the personal player to return to that feed. Personal playback
-does not publish to other users or change the owner's Spotify playback.
-It uses the existing public music catalog/audio service, not Spotify audio.
-Word-by-word highlighting requires word timings to exist for the recording.
+## Online Features
 
-Saves belong to this browser/file, not a Moddest account. Keep the same file
-location when testing; browsers may change file-storage behavior if it moves.
-If browser storage is disabled, the game can still load, but saves may not persist.
+This is an online-connected client, not a fully offline game or music archive.
+Application code, styles, icons and the original 25 thumbnails are embedded.
+The additional artwork, game programs and audio still load from online services.
+Skribbl.io opens its original site in another tab.
 
-No credentials, server keys, private history exports, account cookies or
-backend configuration are included. Public data requests omit credentials.
-Game frames are sandboxed separately from the file's storage; only validated
-save snapshots are accepted. Game and library credits remain available.
+Music uses the existing HTTPS public services, with the selected paid1 service
+as a network-failure fallback. It never streams Spotify account audio or changes
+anyone else's playback. Public Spotify metadata remains read-only.
 
-The original full portable client and hosted websites are not replaced.
-See VERIFICATION.md for the exact tests and remaining device-specific limits.
+Connections selects the public live/history and preferred game service.
+Games missing from the reduced Daki catalog retry against the complete existing
+HTTPS catalog. An unavailable or blocked backend can still prevent playback.
+
+## Local Data and Limits
+
+Music libraries, likes and playlists save to this browser/file, not a Moddest
+account. Existing local game saves are preserved. Keep the file location stable;
+managed-browser storage policies may prevent persistence or change it when moved.
+
+There are no account logins, proxy-site launchers, chat, AI, reservations or
+private account exports in this package. Requests omit account credentials.
+Game documents remain sandboxed; accepted saves are source/nonce validated.
+
+Word-by-word lyrics depend on available timings. Background updates remain
+subject to browser/OS throttling; a local HTML file cannot remove that restriction
+or make a blocked service accessible. Direct testing on the school Mac is still
+needed. See VERIFICATION.md for the tests and remaining limits.
+
+The full hosted site and original portable client are not replaced.
