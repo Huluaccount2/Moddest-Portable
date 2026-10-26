@@ -1,42 +1,49 @@
-# Moddest Lite 0.3.0 Verification, 2026-10-26
+# Moddest Lite 0.3.1 Verification, 2026-10-26
 
-## Implemented
+## Game Loading Repair
 
-- Bundles all 218 current GAME_LIBRARY entries without the previous first-25
-  truncation. The original 25 thumbnails stay inline; others load lazily.
-- Imports the main site's PersonalMusic, MusicPlaybackProvider,
-  PersonalMusicPlayer, artist views, lyrics popup and music CSS directly.
-- Build-time adapters replace only account persistence, Next navigation,
-  public endpoint URLs and title ownership for the standalone HTML.
-- Original player readiness, startup timeout, retry and media controls are
-  retained. Local playlists/likes/queue use the existing shelf validator.
-- Title updates read the audio position directly, use adaptive word-boundary
-  scheduling, and use the main site's elapsed-time title scroller for long lines.
-- Public playback uses the existing WebSocket with ordered snapshots, stale
-  frame rejection, clock localization, reconnect and polling fallback.
+- All 218 thumbnails are embedded: 214 optimized WebP images and four original
+  ICO files. The package build fails if a thumbnail is missing; it no longer
+  silently substitutes remote artwork URLs.
+- Added a catalog-validated, read-only /api/portable/games/{id}/ route. It
+  serves all 218 catalog entries through paid1 without restoring the disabled
+  batch in Daki's main page.
+- Nested HTML/JS/CSS/JSON asset paths stay on that same per-game route.
+- Scoped known publisher splash assets and the copied /main.min.js SDK to the
+  game root; removed missing optional Paper.io ad-loader references.
+- Already-rewritten scripts stream through the HTTP mirrors using a recognized
+  JavaScript MIME type, avoiding the paid1 relay's 18 MiB text rewrite limit.
+- Added actionable game startup errors while retaining the opaque iframe
+  sandbox and source/nonce-checked local saves.
+- Fixed stream cancellation/error handling in the live Daki proxy and gateway.
+  Unchanged rollback copies were saved before the patches and the backend was
+  restarted. No settings, account data or allocation sizes were changed.
 
 ## Passed
 
-- Seven automated Lite tests: full catalog/package; search; public live/history;
-  sandboxed launch, complete-catalog fallback and save validation; original
-  music player/likes/queue/lyrics/pause; ordered pushes and title scrolling;
-  explicit connection failures.
-- Seventeen focused backend/lyrics/title regression tests.
-- Main-site TypeScript check and Worker deployment.
-- Live search, audio clock advancement, lyrics popup with 63 timed lines,
-  current-word highlighting and an 11-track album view.
-- Public WebSocket accepted Origin: null and sent real playback snapshots.
-- Desktop and 390px music layouts had no horizontal page overflow; the mobile
-  dock remained within the viewport.
-- Six representative game entry URLs returned HTTP 200, including Retro Bowl,
-  College, 2048, upstream, Bee Swarm Simulator and Geometry Dash Lite.
+- Art verification: 218 / 218 images cached and embedded.
+- HTTP check: 217 / 217 in-panel game entry routes and their checked first
+  startup scripts/styles passed through paid1. Skribbl.io is external.
+  Transient failures during deployment were retried after service restoration.
+- Eight automated Lite tests, including the new-game paid1 route and embedded
+  artwork, existing music behavior, ordered pushes and tab scrolling.
+- Five portable-game backend tests: known-ID/path validation, credentials
+  stripping, binary integrity, scoped vendor rewriting and SDK/ad-loader fixes.
+- A real HTTP stream-cancellation regression test leaves the proxy healthy.
+- Penrose reached its title screen. Tetris reached its menu, started a round
+  and responded to controls. Vex 8 passed the publisher splash and rendered its
+  game stage. These checks go beyond a successful HTML response.
+- Paid1 proxy health returned HTTP 200 after the cancellation regression check.
+- Existing music UI, libraries, playlists, queue, lyrics and title scheduling
+  remain bundled from Moddest as in 0.3.0.
 
-## Not Established
+## Limits
 
-- Browser automation allows HTTP/HTTPS only. UI tests use the exact generated
-  HTML through a read-only localhost preview, not direct file opening.
-- Actual school-Mac file loading, background title smoothness on that device,
-  audible alignment and every game's complete gameplay remain unverified.
-- The 218-game count is catalog inclusion, not a claim of testing every level.
-- No browser security policies, account credentials or server resource plans
-  were changed. No unrelated Daki services were restarted.
+- HTTP startup-file checks are not complete gameplay tests of all 218 games.
+- Browser tools permit HTTP/HTTPS only. The UI preview serves the exact generated
+  HTML bytes through localhost; direct file use on the school Mac still needs
+  a device test. No browser security policies were changed.
+- Game programs/audio require working online services. Embedded thumbnails do
+  not depend on any remote host, but a local file is not a fully offline archive.
+- Background title updates remain subject to browser/OS throttling. Word timing
+  depends on the recording's available lyric data.
