@@ -1,5 +1,7 @@
 # Moddest Main HTML
 
+Version 0.1.1 restores Lite's connection routing: public feeds and games prefer Paid1, while music prefers the HTTPS Worker service. Public requests can fall back to the other known endpoints if one is unreachable. Game asset paths and audio URLs follow the service that actually succeeded. HTTP mirrors carry anonymous data only; account linking, signed requests, and private sockets use HTTPS/WSS exclusively. Rate-limit responses are not retried across mirrors.
+
 This is the current main Moddest frontend packaged as one downloaded HTML file, not the Lite interface or a Daki mirror. Download `Moddest.html` using GitHub's Download raw file button, then open it in Chrome.
 
 Included: the real game library with 218 embedded thumbnails, public live listening and recent history, the personal music player with word-synced lyrics and mini-player, community chat, AI interface, cloud-browser reservations, Spotify remote interface, and the existing Movies & TV view. Collections open their main-site links separately. Games, media, and other online services still require the main Moddest backend; this is not an offline game archive or an embedded copy of the server.
