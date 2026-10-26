@@ -1,3 +1,11 @@
+## Full Main-Site HTML
+
+[Download Moddest.html](https://github.com/Huluaccount2/Moddest-Portable/raw/refs/heads/main/main-html/Moddest.html) - the current main frontend in one file, with secure account linking. No terminal or local server is needed. Internet access to Moddest is still required. [Instructions and verification](main-html/README.md).
+
+The older launcher and Lite packages remain available below and in their existing folders.
+
+---
+
 # Moddest Portable Client 0.1.0 Beta
 
 This is a local React build of the Moddest interface, not an iframe of the main
