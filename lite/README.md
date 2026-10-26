@@ -4,11 +4,16 @@
 
 Open the downloaded HTML in Chrome. No installation, Terminal, Node.js, or
 other files are needed. The interface, icons, styles and 25 game thumbnails
-are embedded in this approximately 193 KB file.
+are embedded in this approximately 213 KB file.
 
 Included:
 - The first 25 games from the existing Moddest catalog, Retro Bowl through Vex 7.
 - Live public Moddest playback, album artwork, progress and word-timed lyrics.
+- Personal music search and audio playback, with play/pause, queue navigation,
+  seeking and volume. Audio continues while browsing the game/history views.
+- A lyrics popup with timed words and click-to-seek, plus changing tab lyrics.
+  Tab lyrics use personal playback while active and the public feed otherwise.
+  After pausing or ten seconds without a lyric, the title returns to Moddest.
 - The ten latest public listening-history entries and recorded play counts.
 - Local per-game saves, search, categories, full-screen game view and credits.
 
@@ -21,8 +26,11 @@ service accessible, and managed-device policies can still restrict features.
 Skribbl.io opens its original site in a separate tab; the other games open
 inside the local interface. There are no proxy website launchers, accounts,
 chat, AI, reservations, Spotify controls or hidden hosted-page redirects.
-The music section displays the owner's public live playback; it does not
-stream Spotify audio or expose anyone else's private listening/account data.
+The public live strip displays the owner's playback until you choose a song
+in Music. Stop the personal player to return to that feed. Personal playback
+does not publish to other users or change the owner's Spotify playback.
+It uses the existing public music catalog/audio service, not Spotify audio.
+Word-by-word highlighting requires word timings to exist for the recording.
 
 Saves belong to this browser/file, not a Moddest account. Keep the same file
 location when testing; browsers may change file-storage behavior if it moves.
