@@ -1,6 +1,6 @@
 ## Full Main-Site HTML
 
-[Download Moddest.html](https://github.com/Huluaccount2/Moddest-Portable/raw/refs/heads/main/main-html/Moddest.html) - the current main frontend in one file, with secure account linking. No terminal or local server is needed. Internet access to Moddest is still required. [Instructions and verification](main-html/README.md).
+[Download Moddest.html](https://github.com/Huluaccount2/Moddest-Portable/raw/refs/heads/main/main-html/Moddest.html) - the current main frontend in one file, with username-only temporary guest visits and one-click access to the full game library. No terminal or local server is needed. Internet access to Moddest is still required. [Instructions and verification](main-html/README.md).
 
 The older launcher and Lite packages remain available below and in their existing folders.
 
