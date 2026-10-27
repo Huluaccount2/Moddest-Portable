@@ -1,4 +1,8 @@
-# Moddest Main HTML 0.1.8
+# Moddest Main HTML 0.1.9
+
+The shared library now contains 974 entries: the previous 218 plus 756 unique GN Math additions. The GN snapshot contains 849 games; 93 entries map to existing games or a duplicate title within GN itself. All new covers are embedded in this file. Select GN Math in the category controls to find the additions.
+
+All 756 new entry documents and covers were checked, along with 1,464 declared startup-resource requests. Sixty-five entries still reference broken/missing startup resources and remain listed as Awaiting repair, with launch disabled. Passing the file checks does not prove that a game reaches gameplay; full browser verification remains incomplete. The per-game status is in the live `/games/gn-validation.json` report and the local `outputs/gn-math-import` reports. Existing game IDs and saves were not replaced.
 
 This repair fixes Unity loaders deriving asset URLs from about:srcdoc, bootstraps catalog-game workers through scoped blobs while retaining the opaque sandbox, and keeps dynamically requested game paths on their selected endpoint. Optional service-worker registration stays disabled. Lyric lookups now retain their 65-second request budget. The Connection status section at the bottom of each view tests public routes and secure chat/AI preflights without sending session credentials. It cannot override network restrictions; chat and AI deliberately never send private data over HTTP.
 
@@ -20,7 +24,7 @@ AI and reservations use an automatically created, scoped anonymous device sessio
 
 ## Games and music
 
-- One press of More games reveals the existing 218-game library. Filtering or sorting does not collapse it again. The unwanted 150-game expansion and ROM player have been removed; no replacement batch was added.
+- One press of More games reveals the full 974-entry library. Filtering or sorting does not collapse it again. The previously removed 150-game batch and ROM player remain removed; the GN Math import is a separate catalog addition.
 - Generic cross-origin script diagnostics and the recoverable Unity downloadAsmCode duplicate-job warning remain in browser diagnostics without creating false failure banners. Other runtime errors remain visible.
 - Fullscreen uses native browser fullscreen where available, with an in-page fallback, scroll locking, a visible exit control and Escape handling. The game iframe stays mounted when entering/exiting, preserving the running game.
 - One shared header and expanded live-listening widget across bundled pages.
