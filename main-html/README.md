@@ -1,4 +1,8 @@
-# Moddest Main HTML 0.1.6
+# Moddest Main HTML 0.1.7
+
+Spotlight rotates three games every 30 minutes, using the same selection as the main site. Returning to a backgrounded page refreshes the selection without interrupting a running game.
+
+The browser page now offers a provider-hosted Firefox beta, running locally on the visitor's device in a separate tab without using a VM slot. The launch notice explains that Puter handles the browser and networking, including its profile-storage behavior. This is not a Moddest-hosted browser or a guaranteed private/incognito session. The self-hosted Firefox engine remains disabled because its networking relay refused access. Existing VM reservations are still available under Backup. Browser support, provider availability and network filtering still apply.
 
 Download `Moddest.html` and open it in Chrome. This is the main Moddest frontend in one file, not an iframe or the Lite design. Internet access is still needed for games, music, lyrics, chat and other online services.
 
@@ -35,4 +39,3 @@ Automated checks cover one-click full-library expansion, filters remaining expan
 The live browser preview verified anonymous reservation availability and AI readiness without a username. The existing username chat flow, album icons, shared player and 218-game library remain covered by tests. The actual downloaded file still needs testing on the school Mac. No production chat message was posted during verification.
 
 Build in the existing project workspace with `node build.mjs`. No server secrets or user databases are included in the HTML. Older 0.1.0-0.1.2 files used account linking; this version does not.
-
