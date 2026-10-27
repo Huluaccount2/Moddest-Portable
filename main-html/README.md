@@ -1,31 +1,33 @@
-# Moddest Main HTML
+# Moddest Main HTML 0.1.3
 
-Version 0.1.2 adds one persistent navigation header and the same expanded live-listening widget across every bundled page. The widget retains its cover, centered lyrics, progress bar and source label during navigation. Music no longer claims the tab title when no personal track is selected; live lyrics continue there, while a selected personal track uses its own audio-clock lyrics. The shared header is measured so the music and chat workspaces fit the remaining viewport height.
+Download `Moddest.html` and open it in Chrome. This is the main Moddest frontend in one file, not an iframe or the Lite design. Internet access is still needed for games, music, lyrics, chat and other online services.
 
-Version 0.1.1 restores Lite's connection routing: public feeds and games prefer Paid1, while music prefers the HTTPS Worker service. Public requests can fall back to the other known endpoints if one is unreachable. Game asset paths and audio URLs follow the service that actually succeeded. HTTP mirrors carry anonymous data only; account linking, signed requests, and private sockets use HTTPS/WSS exclusively. Rate-limit responses are not retried across mirrors.
+## Username-only visits
 
-This is the current main Moddest frontend packaged as one downloaded HTML file, not the Lite interface or a Daki mirror. Download `Moddest.html` using GitHub's Download raw file button, then open it in Chrome.
+Each time the file opens, choose a username to join as a temporary guest. There is no password, website sign-in, account linking or approval page. You can also browse games and music without entering chat.
 
-Included: the real game library with 218 embedded thumbnails, public live listening and recent history, the personal music player with word-synced lyrics and mini-player, community chat, AI interface, cloud-browser reservations, Spotify remote interface, and the existing Movies & TV view. Collections open their main-site links separately. Games, media, and other online services still require the main Moddest backend; this is not an offline game archive or an embedded copy of the server.
+Guest sessions have their own IDs and profiles, expire after 12 hours, and are kept only in the open file's memory. Closing or reloading the file starts a new visit. Choosing the same name again does not recover an old profile, messages or conversations. Sent messages remain in chat history. Existing registered names and reserved staff names cannot be claimed by guests.
 
-## Account linking
+Game saves and the personal music library remain local to this browser; they do not reset when you choose a different guest name. A non-authorizing anonymous browser identifier may persist to enforce guest browser bans. It is not a login token. Clearing browser storage can remove local progress and that identifier.
 
-1. In the downloaded file, choose Sign in, then Start account linking.
-2. Open the provided `https://moddest.uk/portable/connect` approval page.
-3. Sign in on the main site if necessary. Check that the displayed code matches the file and approve it.
-4. Return to the file. Its chat, library and game-save requests now use the linked account.
+Regular website accounts and owner tools remain protected. The HTML guest mode does not unlock owner Spotify controls, owner-only AI, cloud-browser reservations, moderation, or somebody else's private data. Use the main website for those account-only tools. Main-site sign-in has not been removed. Guest chat messages and uploads are rate-limited; guest uploads have additional daily limits.
 
-The file never receives your website password or login cookies. It creates a non-exportable P-256 signing key saved in IndexedDB. Requests include short-lived, one-use signed proofs. A separate server session is encrypted at rest, limited to approved features, and expires after 30 days. Remove a link from the file or the main site's linked-files page. Unlinking does not end your normal website session.
+## Games and music
 
-Password changes, account deletion, moderation, new Spotify authorization, and browser-profile reset must be done on the main site. Account linking requires access to the main site for approval. Clearing browser storage or browser policies that prevent key storage may require relinking. Never approve a code from an untrusted file.
+- One press of More games reveals the entire 218-game library. Filtering or sorting does not collapse it again.
+- One shared header and expanded live-listening widget across bundled pages.
+- Music-page live tab lyrics continue when no personal track is selected; personal playback uses its own lyrics.
+- Music includes word-synced lyrics, albums, artist profiles, queues and the persistent mini-player.
+- Public feeds and games prefer the same Paid1 route as Lite, while music prefers the HTTPS Worker. Known endpoints can be used as fallbacks; game assets and audio follow the successful endpoint.
+- Guest entry, signed chat/profile requests and private sockets use HTTPS/WSS only. HTTP mirrors carry anonymous public reads, never session credentials. Rate-limit responses are not retried across mirrors.
+
+Collections and third-party players retain their existing online restrictions. This is not an offline game archive or a copy of the backend. Managed-browser filtering and background throttling can still affect it.
 
 ## Verification
 
-Type checking and the production site build pass. Six security/integration tests cover the real chat service, session isolation, library saving, CSRF rejection, signature binding, replay rejection, scope restrictions, credential-free CORS, one-use socket tickets, and revocation.
+Automated checks cover one-click full-library expansion, filters remaining expanded, username entry without passwords, local game/music storage, shared headers, live and personal tab lyrics, isolated guest IDs, expiry, revocation, browser bans, registered-name protection, owner-tool restrictions, signed request replay protection, secure CORS and endpoint fallback.
 
-Browser preview checks: all 218 thumbnail records are embedded; the original games and music interfaces render; 2048 launches and saves locally; personal audio plays; the word-synced lyrics popup opens; the mini-player survives navigation; the linking key persists across reload; a pending live link can be revoked. The live approval page and CORS preflight return the expected responses.
+The live browser preview joined chat as a temporary guest, connected its socket, revealed all 218 games with one click, and ended the visit successfully. The actual downloaded file still needs testing on the school Mac. No production chat message was posted during verification.
 
-The actual downloaded file has not been tested on the school Mac. Managed-browser policies and background-tab throttling can still affect it. No live owner-account approval was performed during these tests. Cloud-browser availability and third-party collection/player restrictions are unchanged.
-
-Build: `node build.mjs` from this project workspace. Backend account-linking source lives in the main site's `lib/school-chat/portable.ts`; no server secrets or user data are included in this download.
+Build in the existing project workspace with `node build.mjs`. No server secrets or user databases are included in the HTML. Older 0.1.0-0.1.2 files used account linking; this version does not.
 
