@@ -1,4 +1,6 @@
-# Moddest Main HTML 0.1.9
+# Moddest Main HTML 0.1.10
+
+This version adds automatic update announcements. The file checks the public GitHub `main-html/latest.json` manifest on opening, every 15 minutes while visible, and when focus/connectivity returns (at most once per minute). A confirmed newer version shows a dismissible banner linking to this GitHub folder. Offline or blocked checks are silent and never prevent use. No account or credentials are sent. Existing 0.1.9 and older downloads must be replaced once to gain this feature. Future releases must publish the built `Moddest.html` before publishing the matching `latest.json`; both are generated from `src/release.json`.
 
 The shared library now contains 974 entries: the previous 218 plus 756 unique GN Math additions. The GN snapshot contains 849 games; 93 entries map to existing games or a duplicate title within GN itself. All new covers are embedded in this file. Select GN Math in the category controls to find the additions.
 
