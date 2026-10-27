@@ -1,4 +1,6 @@
-# Moddest Main HTML 0.1.7
+# Moddest Main HTML 0.1.8
+
+This repair fixes Unity loaders deriving asset URLs from about:srcdoc, bootstraps catalog-game workers through scoped blobs while retaining the opaque sandbox, and keeps dynamically requested game paths on their selected endpoint. Optional service-worker registration stays disabled. Lyric lookups now retain their 65-second request budget. The Connection status section at the bottom of each view tests public routes and secure chat/AI preflights without sending session credentials. It cannot override network restrictions; chat and AI deliberately never send private data over HTTP.
 
 Spotlight rotates three games every 30 minutes, using the same selection as the main site. Returning to a backgrounded page refreshes the selection without interrupting a running game.
 
