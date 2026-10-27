@@ -1,4 +1,4 @@
-# Moddest Main HTML 0.1.5
+# Moddest Main HTML 0.1.6
 
 Download `Moddest.html` and open it in Chrome. This is the main Moddest frontend in one file, not an iframe or the Lite design. Internet access is still needed for games, music, lyrics, chat and other online services.
 
@@ -15,6 +15,8 @@ AI and reservations use an automatically created, scoped anonymous device sessio
 ## Games and music
 
 - One press of More games reveals the existing 218-game library. Filtering or sorting does not collapse it again. The unwanted 150-game expansion and ROM player have been removed; no replacement batch was added.
+- Generic cross-origin script diagnostics and the recoverable Unity downloadAsmCode duplicate-job warning remain in browser diagnostics without creating false failure banners. Other runtime errors remain visible.
+- Fullscreen uses native browser fullscreen where available, with an in-page fallback, scroll locking, a visible exit control and Escape handling. The game iframe stays mounted when entering/exiting, preserving the running game.
 - One shared header and expanded live-listening widget across bundled pages.
 - The top player retracts while scrolling, using the main site's compact layout.
 - Album covers become embedded tab icons rather than remote favicon links. Chat unread badges still take priority.
