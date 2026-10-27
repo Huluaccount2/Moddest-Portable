@@ -1,4 +1,4 @@
-# Moddest Main HTML 0.1.3
+# Moddest Main HTML 0.1.4
 
 Download `Moddest.html` and open it in Chrome. This is the main Moddest frontend in one file, not an iframe or the Lite design. Internet access is still needed for games, music, lyrics, chat and other online services.
 
@@ -16,6 +16,9 @@ Regular website accounts and owner tools remain protected. The HTML guest mode d
 
 - One press of More games reveals the entire 218-game library. Filtering or sorting does not collapse it again.
 - One shared header and expanded live-listening widget across bundled pages.
+- The top player retracts while scrolling, using the main site's compact layout.
+- Album covers become embedded tab icons rather than remote favicon links. Chat unread badges still take priority.
+- Visible HTML visits send anonymous presence heartbeats. Tabs in the same file browser share an anonymous viewer ID; hidden/closed tabs leave, and missed leaves expire after 75 seconds. Failed reads show unavailable after 60 seconds rather than freezing an old count.
 - Music-page live tab lyrics continue when no personal track is selected; personal playback uses its own lyrics.
 - Music includes word-synced lyrics, albums, artist profiles, queues and the persistent mini-player.
 - Public feeds and games prefer the same Paid1 route as Lite, while music prefers the HTTPS Worker. Known endpoints can be used as fallbacks; game assets and audio follow the successful endpoint.
