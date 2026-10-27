@@ -1,5 +1,7 @@
 # Moddest Main HTML
 
+Version 0.1.2 adds one persistent navigation header and the same expanded live-listening widget across every bundled page. The widget retains its cover, centered lyrics, progress bar and source label during navigation. Music no longer claims the tab title when no personal track is selected; live lyrics continue there, while a selected personal track uses its own audio-clock lyrics. The shared header is measured so the music and chat workspaces fit the remaining viewport height.
+
 Version 0.1.1 restores Lite's connection routing: public feeds and games prefer Paid1, while music prefers the HTTPS Worker service. Public requests can fall back to the other known endpoints if one is unreachable. Game asset paths and audio URLs follow the service that actually succeeded. HTTP mirrors carry anonymous data only; account linking, signed requests, and private sockets use HTTPS/WSS exclusively. Rate-limit responses are not retried across mirrors.
 
 This is the current main Moddest frontend packaged as one downloaded HTML file, not the Lite interface or a Daki mirror. Download `Moddest.html` using GitHub's Download raw file button, then open it in Chrome.
