@@ -1,20 +1,20 @@
-# Moddest Main HTML 0.1.4
+# Moddest Main HTML 0.1.5
 
 Download `Moddest.html` and open it in Chrome. This is the main Moddest frontend in one file, not an iframe or the Lite design. Internet access is still needed for games, music, lyrics, chat and other online services.
 
 ## Username-only visits
 
-Each time the file opens, choose a username to join as a temporary guest. There is no password, website sign-in, account linking or approval page. You can also browse games and music without entering chat.
+Only chat asks for a username. Games, music, AI and browser reservations do not require a username, password, website sign-in, account linking or approval page. The file opens directly into the game library.
 
 Guest sessions have their own IDs and profiles, expire after 12 hours, and are kept only in the open file's memory. Closing or reloading the file starts a new visit. Choosing the same name again does not recover an old profile, messages or conversations. Sent messages remain in chat history. Existing registered names and reserved staff names cannot be claimed by guests.
 
 Game saves and the personal music library remain local to this browser; they do not reset when you choose a different guest name. A non-authorizing anonymous browser identifier may persist to enforce guest browser bans. It is not a login token. Clearing browser storage can remove local progress and that identifier.
 
-Regular website accounts and owner tools remain protected. The HTML guest mode does not unlock owner Spotify controls, owner-only AI, cloud-browser reservations, moderation, or somebody else's private data. Use the main website for those account-only tools. Main-site sign-in has not been removed. Guest chat messages and uploads are rate-limited; guest uploads have additional daily limits.
+AI and reservations use an automatically created, scoped anonymous device session, separate from the chat username. Its non-exportable signing key is saved in this file browser's IndexedDB when available, for up to seven days, so reservations can survive refresh. If browser storage is disabled, anonymous access lasts only for the open visit. Clearing storage can lose reservation access. Anonymous browser sessions are always private, and keep normal reservation hours, one-booking-per-day limits, server availability and owner protections. Anonymous AI is limited to 15 generations per browser per day, with a 120-generation shared daily cap. Real accounts, moderation, owner Spotify controls and other users' data remain protected. Main-site sign-in has not been removed.
 
 ## Games and music
 
-- One press of More games reveals the entire 218-game library. Filtering or sorting does not collapse it again.
+- One press of More games reveals the existing 218-game library. Filtering or sorting does not collapse it again. The unwanted 150-game expansion and ROM player have been removed; no replacement batch was added.
 - One shared header and expanded live-listening widget across bundled pages.
 - The top player retracts while scrolling, using the main site's compact layout.
 - Album covers become embedded tab icons rather than remote favicon links. Chat unread badges still take priority.
@@ -30,7 +30,7 @@ Collections and third-party players retain their existing online restrictions. T
 
 Automated checks cover one-click full-library expansion, filters remaining expanded, username entry without passwords, local game/music storage, shared headers, live and personal tab lyrics, isolated guest IDs, expiry, revocation, browser bans, registered-name protection, owner-tool restrictions, signed request replay protection, secure CORS and endpoint fallback.
 
-The live browser preview joined chat as a temporary guest, connected its socket, revealed all 218 games with one click, and ended the visit successfully. The actual downloaded file still needs testing on the school Mac. No production chat message was posted during verification.
+The live browser preview verified anonymous reservation availability and AI readiness without a username. The existing username chat flow, album icons, shared player and 218-game library remain covered by tests. The actual downloaded file still needs testing on the school Mac. No production chat message was posted during verification.
 
 Build in the existing project workspace with `node build.mjs`. No server secrets or user databases are included in the HTML. Older 0.1.0-0.1.2 files used account linking; this version does not.
 
