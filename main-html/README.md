@@ -1,4 +1,6 @@
-# Moddest Main HTML 0.1.11
+# Moddest Main HTML 0.1.12
+
+When a game is open, the existing music player docks to the right of the navigation on wide screens; narrower screens use a short second row. Closing the game restores the regular player. The header's full-screen lyric-view button has been removed to avoid confusing it with the game's fullscreen control. Game fullscreen and playback state are preserved.
 
 ## HTTP-only downloaded client
 
