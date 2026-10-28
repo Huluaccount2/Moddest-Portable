@@ -1,12 +1,18 @@
-# Moddest Main HTML 0.1.10
+# Moddest Main HTML 0.1.11
 
-This version adds automatic update announcements. The file checks the public GitHub `main-html/latest.json` manifest on opening, every 15 minutes while visible, and when focus/connectivity returns (at most once per minute). A confirmed newer version shows a dismissible banner linking to this GitHub folder. Offline or blocked checks are silent and never prevent use. No account or credentials are sent. Existing 0.1.9 and older downloads must be replaced once to gain this feature. Future releases must publish the built `Moddest.html` before publishing the matching `latest.json`; both are generated from `src/release.json`.
+## HTTP-only downloaded client
+
+Embedded requests now use `http://paid1.daki.cc:4144` and its `ws://` endpoint only, including signed guest chat/AI/VM reservation requests, music/audio, artwork, viewer counts, update checks and lyric feeds. A Content Security Policy blocks direct embedded HTTPS/WSS loads rather than silently falling back. This affects only the downloaded HTML, not the main website. The Daki relay contacts the HTTPS backend server-side and retains scoped signatures, replay protection, normal bans and rate limits. Private signing keys remain on the device, but HTTP traffic is NOT encrypted: prompts, messages, media and session traffic can be read or altered in transit. Do not share sensitive information. Third-party games/players with dependencies that cannot use the relay may not work; external links (including GitHub and provider-hosted Firefox) open separately and are not HTTP-converted. VM reservation availability does not prove the remote browser gateway is online or compatible.
+
+Deploy the matching `outputs/daki-paid1/moddest-paid1.mjs` relay before publishing this HTML. This release must not be advertised as verified on the school Mac; that device has not been tested here.
+
+The file checks the public GitHub `main-html/latest.json` manifest through the HTTP Daki relay on opening, every 15 minutes while visible, and when focus/connectivity returns (at most once per minute). A confirmed newer version shows a dismissible banner linking to this GitHub folder. Offline or blocked checks are silent and never prevent use. No account or credentials are sent for version checks. Existing 0.1.9 and older downloads must be replaced once to gain this feature. Future releases must publish the built `Moddest.html` before publishing the matching `latest.json`; both are generated from `src/release.json`.
 
 The shared library now contains 974 entries: the previous 218 plus 756 unique GN Math additions. The GN snapshot contains 849 games; 93 entries map to existing games or a duplicate title within GN itself. All new covers are embedded in this file. Select GN Math in the category controls to find the additions.
 
 All 756 new entry documents and covers were checked, along with 1,464 declared startup-resource requests. Sixty-five entries still reference broken/missing startup resources and remain listed as Awaiting repair, with launch disabled. Passing the file checks does not prove that a game reaches gameplay; full browser verification remains incomplete. The per-game status is in the live `/games/gn-validation.json` report and the local `outputs/gn-math-import` reports. Existing game IDs and saves were not replaced.
 
-This repair fixes Unity loaders deriving asset URLs from about:srcdoc, bootstraps catalog-game workers through scoped blobs while retaining the opaque sandbox, and keeps dynamically requested game paths on their selected endpoint. Optional service-worker registration stays disabled. Lyric lookups now retain their 65-second request budget. The Connection status section at the bottom of each view tests public routes and secure chat/AI preflights without sending session credentials. It cannot override network restrictions; chat and AI deliberately never send private data over HTTP.
+This repair fixes Unity loaders deriving asset URLs from about:srcdoc, bootstraps catalog-game workers through scoped blobs while retaining the opaque sandbox, and keeps dynamically requested game paths on their selected endpoint. Optional service-worker registration stays disabled. Lyric lookups retain their 65-second request budget. Connection status tests the HTTP relay without sending session credentials. It cannot override network restrictions.
 
 Spotlight rotates three games every 30 minutes, using the same selection as the main site. Returning to a backgrounded page refreshes the selection without interrupting a running game.
 
@@ -35,8 +41,8 @@ AI and reservations use an automatically created, scoped anonymous device sessio
 - Visible HTML visits send anonymous presence heartbeats. Tabs in the same file browser share an anonymous viewer ID; hidden/closed tabs leave, and missed leaves expire after 75 seconds. Failed reads show unavailable after 60 seconds rather than freezing an old count.
 - Music-page live tab lyrics continue when no personal track is selected; personal playback uses its own lyrics.
 - Music includes word-synced lyrics, albums, artist profiles, queues and the persistent mini-player.
-- Public feeds and games prefer the same Paid1 route as Lite, while music prefers the HTTPS Worker. Known endpoints can be used as fallbacks; game assets and audio follow the successful endpoint.
-- Guest entry, signed chat/profile requests and private sockets use HTTPS/WSS only. HTTP mirrors carry anonymous public reads, never session credentials. Rate-limit responses are not retried across mirrors.
+- Public feeds, games, music, guest entry, signed chat/profile requests and private sockets use the HTTP/WS Paid1 relay. There is no automatic HTTPS/WSS fallback in the downloaded file. Rate-limit responses are not retried.
+- Scoped signatures and replay checks remain enabled; HTTP transport does not provide confidentiality or protection against an active network attacker.
 
 Collections and third-party players retain their existing online restrictions. This is not an offline game archive or a copy of the backend. Managed-browser filtering and background throttling can still affect it.
 
