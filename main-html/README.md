@@ -18,7 +18,7 @@ This repair fixes Unity loaders deriving asset URLs from about:srcdoc, bootstrap
 
 Spotlight rotates three games every 30 minutes, using the same selection as the main site. Returning to a backgrounded page refreshes the selection without interrupting a running game.
 
-The browser page now offers a provider-hosted Firefox beta, running locally on the visitor's device in a separate tab without using a VM slot. The launch notice explains that Puter handles the browser and networking, including its profile-storage behavior. This is not a Moddest-hosted browser or a guaranteed private/incognito session. The self-hosted Firefox engine remains disabled because its networking relay refused access. Existing VM reservations are still available under Backup. Browser support, provider availability and network filtering still apply.
+Version 0.1.14 retains the Firefox removal and adds a native movie player backed by the rolling Daki cache. It selects that player only when the cache reports a configured source for the title. The cache is deployed on Paid1 with one manually configured pilot: Spider-Man: Brand New Day (TMDB 969681). Other titles keep the external player. Automatic source discovery and URL renewal are not implemented; the pilot can stop if its supplied link expires. Video requests use Daki HTTP without a separate Cloudflare hop. The original video quality is preserved. Retention is 30 minutes behind and 3 minutes ahead, with a 10-minute return grace period and a global disk limit. The main website is unchanged.
 
 Download `Moddest.html` and open it in Chrome. This is the main Moddest frontend in one file, not an iframe or the Lite design. Internet access is still needed for games, music, lyrics, chat and other online services.
 
