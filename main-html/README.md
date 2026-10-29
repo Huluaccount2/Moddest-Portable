@@ -1,4 +1,6 @@
-# Moddest Main HTML 0.1.20
+# Moddest Main HTML 0.1.21
+
+Version 0.1.21 uses an isolated Skribbl mirror on Paid1 port 4100 for the HTTP site and HTML file. The real Skribbl service still runs multiplayer. Movie startup now has a 45-second total deadline, cancellation on title changes, meaningful service errors and a Retry video action. The backend checks its two existing providers concurrently, bounds lookup time and distinguishes provider outages from a missing title. This cannot repair an unavailable third-party stream. HTTP remains unencrypted; school Mac behavior still requires testing on that device.
 
 Version 0.1.20 starts native playback immediately with automatic buffering, rather than waiting for a metadata-only load before calling play. It retains volume, retry, seeking, track-change cancellation and autoplay-denial behavior. The shared Worker now sends HTML audio requests through the same background cache-filling path as the main site. Previously those requests reached a route without a background context, so a first HTML play could never populate the shared audio cache. Cache diagnostics are now preserved on the public audio response. The Daki wrapper still uses no-store externally; the regional shared server cache can now fill and serve its audio requests.
 
