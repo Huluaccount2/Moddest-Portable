@@ -1,4 +1,6 @@
-# Moddest Main HTML 0.1.18
+# Moddest Main HTML 0.1.19
+
+Version 0.1.19 adds Appearance (the palette icon in the header): original, moonlight, blue sky, sunset and minimal scenes; rain, snow and star effects; strength and animation controls. Preferences stay on this browser without an account. Animations pause when a game is open or the tab is hidden, and reduced-motion preferences are respected. Changing appearance keeps the existing game iframe and music player mounted. Cloud artwork has per-scene IDs so the preview cannot borrow another scene's colors. Browser checks also reached Block Blast's tutorial, Time Shooter 2's play menu and 20 Minutes Till Dawn's title screen; the latter's fixed-size canvas is now fitted within the HTML player at narrow widths. Full gameplay and school Mac verification remain incomplete.
 
 Version 0.1.18 repairs three shared game-startup failures: inaccessible Cache API calls in opaque sandboxes, games calling removed analytics functions, and fixed third-party game libraries that previously loaded outside the HTTP relay. The replacement cache is small and memory-only; it never grants games access to the site's origin or stores multi-gigabyte packages twice. GTA III now streams its split package into Emscripten instead of assembling a second complete copy first. Cuphead downloads four parts per package concurrently rather than starting all 103 data parts at once. These changes do not make large ports suitable for every device.
 
