@@ -1,4 +1,8 @@
-# Moddest Main HTML 0.1.12
+# Moddest Main HTML 0.1.18
+
+Version 0.1.18 repairs three shared game-startup failures: inaccessible Cache API calls in opaque sandboxes, games calling removed analytics functions, and fixed third-party game libraries that previously loaded outside the HTTP relay. The replacement cache is small and memory-only; it never grants games access to the site's origin or stores multi-gigabyte packages twice. GTA III now streams its split package into Emscripten instead of assembling a second complete copy first. Cuphead downloads four parts per package concurrently rather than starting all 103 data parts at once. These changes do not make large ports suitable for every device.
+
+The full 973 non-embed catalog received an entry/startup-resource audit; this is not 973 gameplay tests. GTA III, Baseball Bros, Slope, Subway Surfers and Ballistic Chickens reached their menus in the local HTML browser checks, and Cuphead reached its animated title screen. The HTML security policy now permits requests for local blob/data packages without adding remote hosts; blocking these requests was preventing Unity from reading Cuphead's assembled downloads. Full gameplay is not yet verified for the entire catalog. Some entries still have missing upstream files, and remain awaiting repair rather than being advertised as fixed. The school Mac has not been verified here.
 
 When a game is open, the existing music player docks to the right of the navigation on wide screens; narrower screens use a short second row. Closing the game restores the regular player. The header's full-screen lyric-view button has been removed to avoid confusing it with the game's fullscreen control. Game fullscreen and playback state are preserved.
 
